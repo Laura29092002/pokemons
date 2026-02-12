@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import type { PokemonType } from "../type/PokemonType";
 import { Link } from "react-router-dom";
+import FavoriteList from "../components/FavoritesList";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../store/store";
 
 
 
 function Home(){
     const [pokemons, setPokemons] = useState<PokemonType[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const dispatch = useDispatch();
+    const favorites = useSelector((state: RootState) => state.favorites.pokemons)
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon")
@@ -28,6 +33,7 @@ function Home(){
     return (
     <>
         <h2>Pokemons</h2>
+        <FavoriteList pokemons={favorites} />
         <input type="text" placeholder="Rechercher..." value={searchTerm} onChange={handleSearch}/>
         <ul>
             {filtered.map((p) => (
