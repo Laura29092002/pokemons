@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import type { PokemonType } from "../type/PokemonType";
+import type { PokemonType } from "../../type/PokemonType";
 import { Link } from "react-router-dom";
-import FavoriteList from "../components/FavoritesList";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../store/store";
+import FavoriteList from "../../components/FavoritesList/FavoritesList";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 
 
 
 function Home(){
     const [pokemons, setPokemons] = useState<PokemonType[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const dispatch = useDispatch();
     const favorites = useSelector((state: RootState) => state.favorites.pokemons)
 
     useEffect(() => {

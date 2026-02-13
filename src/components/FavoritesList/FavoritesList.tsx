@@ -1,4 +1,4 @@
-import type { PokemonDetails } from "../type/PokemonDetails";
+import type { PokemonDetails } from "../../type/PokemonDetails";
 
 
 function FavoriteList({pokemons} : {pokemons : PokemonDetails[]}){
