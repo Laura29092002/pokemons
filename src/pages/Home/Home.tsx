@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import type { PokemonType } from "../../type/PokemonType";
 import { Link } from "react-router-dom";
-import FavoriteList from "../../components/FavoritesList/FavoritesList";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
+import Grid from "../../components/Grid";
 
 
 
@@ -31,9 +31,9 @@ function Home(){
 
     return (
     <>
-        <h2>Pokemons</h2>
-        <FavoriteList pokemons={favorites} />
-        <input type="text" placeholder="Rechercher..." value={searchTerm} onChange={handleSearch}/>
+        <h2 className="text-4xl font-bold ">Pokemons</h2>
+        <Grid pokemons={favorites}/>
+        <input type="text" placeholder="Rechercher..." value={searchTerm} onChange={handleSearch} className=" focus:outline-purple-950 text-purple-900 placeholder:text-purple-600 w-96 p-4 shadow-xl bg-violet-200 rounded-lg"/>
         <ul>
             {filtered.map((p) => (
                 <li key={p.id}><Link to={`/pokemon/${p.id}`}>{p.name}</Link></li>
